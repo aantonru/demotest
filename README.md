@@ -1,5 +1,3 @@
-Default boilerplate app.
-
 # INSTALL
 - npm install
 # START

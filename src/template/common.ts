@@ -5,17 +5,15 @@ import { sup3 } from '../base/Support3';
 
 export function ant(params: any) {
 	const item = params.model.scene;
-	item.scale.set(params.scale, params.scale, params.scale);
-	item.traverse((it: THREE.Mesh) => {
-		it.castShadow = true;
-		it.frustumCulled = false;
-		window.console.log(`${it.name}`);
-		if (it.name.indexOf('Sneakers') !== -1) {
-			window.console.log(it);
-			it.visible = false;
-			it.frustumCulled = true;
-		} else window.console.warn(`${it.name.indexOf('Sneakers')}`);
-	});
+	const scale = 0.01//params.scale;
+	item.scale.set( scale, scale, scale);
+	item.traverse( (it:any) => {
+		if (it && it.isMesh) {
+			it.frustumCulled = false;
+			it.castShadow = true;
+			it.visible = true;
+		}
+	})
 	now3.toScene(item);
 }
 
@@ -36,7 +34,7 @@ export function environment() {
 	geo.rotateX(-Math.PI / 2);
 	const mesh = new THREE.Mesh(
 		geo,
-		new THREE.MeshStandardMaterial({ color: 0x555555, emissive: 0x110000, roughness: 0.8 }),
+		new THREE.MeshStandardMaterial({ color: 0x555555, emissive: 0x070707, roughness: 0.8 }),
 	);
 	mesh.receiveShadow = true;
 	mesh.translateY(-0.001);

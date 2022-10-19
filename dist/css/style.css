@@ -1,0 +1,30 @@
+body {
+	color: #fff;
+	font-family: Monospace;
+	font-size: 13px;
+	line-height: 24px;
+	overscroll-behavior: none;
+}
+  
+html, body, #root, .App, #container3 {
+    height: 100%;
+    background-color: #333;
+    margin: 0px;
+    padding: 0px;
+} 
+code {
+  font-family: 'Courier New',
+    monospace;
+}
+
+.container3 canvas {
+    height: 100% !important;
+}
+
+.container3 canvas:focus {
+    outline: none;
+}
+
+div.hidden {
+    display:none;
+}

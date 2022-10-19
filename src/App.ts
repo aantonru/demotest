@@ -25,10 +25,17 @@ class App {
 
 	height: number;
 
+	live: boolean;
+
+	touchTime: number;
+
 	constructor() {
 		this.debug = cfg3.DEBUG;
 		this.container = document.getElementById('container3');
 		this.manager = new THREE.LoadingManager();
+
+		this.live = true;
+		this.touchTime = performance.now();
 
 		this.manager.onLoad = () => {
 			this._loadingDone = true;
@@ -49,6 +56,18 @@ class App {
 		this.import = new Import3(this.manager).setModelsPath('').setMapsPath('./maps/');
 	}
 
+	touch(){
+		this.live = true;
+		this.touchTime = performance.now();
+		console.log('touch');
+	}
+
+	hold(){
+		this.live = false;
+		this.touchTime = performance.now();
+		console.log('hold');
+	}
+
 	mount() {
 		const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
 		renderer.setPixelRatio(window.devicePixelRatio ? window.devicePixelRatio : 1);
@@ -63,13 +82,14 @@ class App {
 		now3.pub(`now3.constructed${cfg3.DEBUG ? '.debug' : ''}`);
 		now3.sub('app3start', () => {
 			this.play();
-			window.console.log('test');
 			now3.controls = new OrbitControls(now3.camera, renderer.domElement);
+			now3.controls.maxPolarAngle = Math.PI * 0.49;
 		});
 
 		now3.setup(this);
 		this.container.appendChild(this.renderer.domElement);
 		window.addEventListener('resize', this.autosize);
+//		window.addEventListener('mousemove', this.touch);
 		if (cfg3.DEBUG) now3.pub('app3.mounted');
 		return this;
 	}

@@ -1,10 +1,10 @@
 export const cfg3 = {
 	DEBUG: true,
 	camtarget: [0, 0, 0],
-	camera: { position: [6, 6, 6], min: 0.1, max: 1000 },
+	camera: { position: [6, 6, 6], min: 1, max: 3000 },
 	postprocessing: false,
 	ant: {
-		model: './models/sexy/scene.gltf',
+		model: './models/ant/scene.gltf',
 		scale: 0.8,
 	},
 	lights: {

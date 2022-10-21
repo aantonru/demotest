@@ -1,4 +1,4 @@
-import { sup3 } from '../base/Support3';
+import { sup3 } from './Support3';
 
 export function autosub(item: any) {
 	item.sub('*', (pth: string) => {

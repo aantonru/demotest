@@ -5,7 +5,7 @@ import { now3 } from './Now3';
 import { cfg3 } from './Config3';
 import { Import3 } from './base/Import3';
 import topubsub from './util/Topubsub';
-import { autosub } from './funs/AUTO';
+import { autosub } from './base/AUTO';
 
 class App {
 	// class App can be extended from Component to use with react.js
